@@ -1,0 +1,2 @@
+# SQL
+Repositório destinado ao estudo de SQL
