@@ -1,0 +1,55 @@
+CREATE TABLE produtos (
+	id_produtos INT PRIMARY KEY,
+  	nome_produto VARCHAR(250), 
+  	descricao_produto VARCHAR(250),
+  	preco_produto DECIMAL(10,2),
+  	categoria_produto VARCHAR(250)
+);
+
+create TABLE clientes (
+	id_clientes INT PRIMARY KEY,
+  	nome_cliente VARCHAR(250),
+  	telefone_cliente VARCHAR(100),
+  	email_cliente VARCHAR(250),
+  	endereco_cliente VARCHAR(250)
+);
+
+CREATE table pedidos (
+	id_pedido INT PRIMARY KEY,
+  	id_cliente INT,
+  	dataHoraPedido DATETIME, 
+  	status VARCHAR(100),
+  	FOREIGN KEY (id_cliente) REFERENCES clientes(id_clientes)
+);
+
+CREATE table itensPedido(
+	id_pedidos INT,
+  	id_produto INT,
+  	quantidade INT,
+  	precoUnitario FLOAT,
+  	FOREIGN KEY (id_pedidos) REFERENCES pedidos(id_pedido),
+  	FOREIGN KEY (id_produto) REFERENCES produtos(id_produtos)
+);
+
+CREATE TABLE colaboradores(
+	id_colaborador INT PRIMARY KEY,
+  	cargo VARCHAR(250),
+  	datacontratacao DATE,
+  	telefone_colaborador VARCHAR(100),
+  	email_colaborador VARCHAR(250)
+);
+
+CREATE TABLE fornecedores(
+	id_fornecedores INT PRIMARY KEY,
+  	nome_empresa_fornecedor VARCHAR(250),
+  	nome_contato_fornecedor VARCHAR(250),
+  	telefone_fornecedor VARCHAR(100),
+  	email_fornecedor VARCHAR(250)
+);
+
+DROP TABLE clientes;
+DROP TABLE produtos;
+DROP TABLE pedidos;
+DROP TABLE itensPedido;
+DROP TABLE colaboradores;
+DROP TABLE fornecedores;
